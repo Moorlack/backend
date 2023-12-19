@@ -3,9 +3,7 @@ version: '3'
 services:
  ssdt_lab:
    restart: always
-   build:
-     context: .
-     dockerfile: ./dockerfile
+   build: .
    environment:
        FLASK_APP: mymodule/views
    ports:
