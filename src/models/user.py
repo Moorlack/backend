@@ -8,6 +8,7 @@ class User (db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     records = db.relationship('Record', back_populates='user')
+    password = db.Column(db.String(87), nullable=False)
     approvedCategories = db.relationship(
         'Category',
         secondary=user_to_category_table,

@@ -1,13 +1,33 @@
-from flask import Blueprint
-from ..controllers.category import *
+from flask import Blueprint, jsonify
+from flask_jwt_extended import jwt_required
+import src.controllers.category as controller
 from ..errors.category import CategoryNotFound, UserAlreadyApproved
 
 category_routers = Blueprint('categories', __name__)
 
-category_routers.route('/api/category', methods=['POST'])(create_category)
-category_routers.route('/api/category/<category_id>', methods=['GET'])(get_category_by_id)
-category_routers.route('/api/category/<category_id>', methods=['DELETE'])(delete_category_by_id)
-category_routers.route('/api/category/user', methods=['PATCH'])(add_approved_user)
+
+@category_routers.route('/api/category', methods=['POST'])
+@jwt_required()
+def create_category():
+    controller.create_category()
+
+
+@category_routers.route('/api/category/<category_id>', methods=['GET'])
+@jwt_required()
+def get_category(category_id):
+    controller.get_category_by_id(category_id)
+
+
+@category_routers.route('/api/category/<category_id>', methods=['DELETE'])
+@jwt_required()
+def delete_category(category_id):
+    controller.delete_category_by_id(category_id)
+
+
+@category_routers.route('/api/category/user', methods=['PATCH'])
+@jwt_required()
+def approve_user():
+    controller.add_approved_user()
 
 
 @category_routers.app_errorhandler(CategoryNotFound)
