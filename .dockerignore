@@ -1,0 +1,6 @@
+.gitignore
+.mysql
+docker-compose.dev.yaml
+docker-compose.yaml
+.env
+README.md

@@ -1,10 +1,25 @@
-version: '3'
-
 services:
- ssdt_lab:
+ api:
    restart: always
    build: .
    environment:
-       FLASK_APP: mymodule/views
+     PORT: 1010
+     DEBUG: true
+     JWT_SECRET_KEY: d55733d213427c339a66cd69764214eb97f1f35b61a0e354409f24c11d2972af
+     DATABASE_URL: mysql+pymysql://database:3306/database?user=root&password=root
    ports:
-     - "5000:5000"
+    - 1010:1010
+   networks:
+     - app
+ database:
+   image: mysql
+   restart: always
+   environment:
+     - MYSQL_ROOT_PASSWORD=root
+   volumes:
+     - ./.mysql/data:/var/lib/mysql
+   networks:
+     - app
+networks:
+  app:
+    driver: bridge

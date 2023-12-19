@@ -37,4 +37,4 @@ from src.models import record
 setup_jwt_handlers(jwt)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=getenv('DEBUG') == 'true', port=getenv('PORT') or '5050', host=getenv('HOST') or '0.0.0.0')
