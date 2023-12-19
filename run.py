@@ -2,7 +2,6 @@ from os import getenv
 from flask import Flask
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
-
 from src.routers.auth import auth_routers
 from src.routers.category import category_routers
 from src.routers.record import record_routers
@@ -10,6 +9,7 @@ from src.utils.db import db
 from src.routers.healthcheck import healthcheck_routers
 from src.routers.app import app_routers
 from src.routers.user import user_routers
+from src.utils.jwt_handlers import setup_jwt_handlers
 import dotenv
 
 dotenv.load_dotenv()
@@ -33,6 +33,8 @@ jwt = JWTManager(app)
 from src.models import user
 from src.models import category
 from src.models import record
+
+setup_jwt_handlers(jwt)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -7,27 +7,26 @@ user_routers = Blueprint('users', __name__)
 
 
 @user_routers.route('/api/user', methods=['POST'])
-@jwt_required()
 def create_user():
-    controller.create_user()
+    return controller.create_user()
 
 
 @user_routers.route('/api/users', methods=['GET'])
 @jwt_required()
 def get_users():
-    controller.get_all_users()
+    return controller.get_all_users()
 
 
 @user_routers.route('/api/user/<user_id>', methods=['GET'])
 @jwt_required()
 def get_user(user_id):
-    controller.get_user_by_id(user_id)
+    return controller.get_user_by_id(user_id)
 
 
 @user_routers.route('/api/user/<user_id>', methods=['DELETE'])
 @jwt_required()
 def delete_user(user_id):
-    controller.delete_user(user_id)
+    return controller.delete_user(user_id)
 
 
 @user_routers.app_errorhandler(UserAlreadyExistsError)
