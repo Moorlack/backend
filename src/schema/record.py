@@ -10,5 +10,6 @@ class CreateRecordSchema(Schema):
 class RecordSchema(Schema):
     id = fields.Integer(required=True)
     sum = fields.Integer(required=True)
+    created_at = fields.DateTime()
     user_id = fields.String()
     category_id = fields.String()

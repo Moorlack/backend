@@ -8,3 +8,8 @@ class CategoryCreateSchema(Schema):
 class CategorySchema(Schema):
     name = fields.Str(required=True)
     id = fields.Integer(required=True)
+
+
+class AddApprovedUser(Schema):
+    user_id = fields.Integer(required=True)
+    category_id = fields.Integer(required=True)
