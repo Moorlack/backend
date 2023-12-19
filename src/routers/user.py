@@ -10,11 +10,11 @@ user_routers.route('/api/user/<user_id>', methods=['GET'])(get_user_by_id)
 user_routers.route('/api/user/<user_id>', methods=['DELETE'])(delete_user)
 
 
-@user_routers.errorhandler(UserAlreadyExistsError)
+@user_routers.app_errorhandler(UserAlreadyExistsError)
 def user_already_exists(err):
     return jsonify({'message': 'User with this name already exists'}), 400
 
 
-@user_routers.errorhandler(UserNotFoundError)
+@user_routers.app_errorhandler(UserNotFoundError)
 def user_not_found(err):
     return jsonify({'message': 'User not found'}), 404

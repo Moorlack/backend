@@ -10,7 +10,7 @@ def create_user():
 
     response = service.create_user(dto)
 
-    return jsonify(response)
+    return jsonify(response), 201
 
 
 def get_user_by_id(user_id):

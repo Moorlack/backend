@@ -10,7 +10,7 @@ def create_category():
 
     response = service.create_category(dto)
 
-    return jsonify(response)
+    return jsonify(response), 201
 
 
 def get_category_by_id(category_id):

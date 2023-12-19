@@ -9,6 +9,6 @@ category_routers.route('/api/category/<category_id>', methods=['GET'])(get_categ
 category_routers.route('/api/category/<category_id>', methods=['DELETE'])(delete_category_by_id)
 
 
-@category_routers.errorhandler(CategoryNotFound)
+@category_routers.app_errorhandler(CategoryNotFound)
 def user_not_found(err):
     return jsonify({'message': 'Category not found'}), 404
