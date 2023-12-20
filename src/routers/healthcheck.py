@@ -10,5 +10,5 @@ def healthcheck():
 
 @healthcheck_routers.route("/api")
 def homepage():
-    response = "<h1>Back-end goes </h1>"
+    response = "<h1 style='white-space: nowrap'>Back-end goes b" + "r" * 5000 + "</h1>"
     return response, 200
