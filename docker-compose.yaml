@@ -4,7 +4,7 @@ services:
    build: .
    environment:
      PORT: 80
-     DEBUG: true
+     DEBUG: false
      JWT_SECRET_KEY: <SECRET KEY>
      DATABASE_URL: mysql+pymysql://database:3306/db?user=root&password=root
    ports:
