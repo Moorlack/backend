@@ -3,6 +3,7 @@
 ### Виконав: Васютинський Олександр IO-13
 
 ## Deploy
+http://194.183.165.223:4445
 
 ## Postman
 https://www.postman.com/moorlack/workspace/kpi-backend
