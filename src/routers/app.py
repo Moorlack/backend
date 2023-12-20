@@ -7,7 +7,7 @@ app_routers = Blueprint('app', __name__)
 
 @app_routers.app_errorhandler(HTTPException)
 def bad_request(err: HTTPException):
-    return jsonify({'message': err.description}), err.code
+    return jsonify({'error': err.description}), err.code
 
 
 @app_routers.app_errorhandler(ValidationError)

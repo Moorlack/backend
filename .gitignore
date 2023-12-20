@@ -1,8 +1,4 @@
 env/
 __pycache__/
-<<<<<<< HEAD
 .mysql
 .idea
-=======
-.mysql
->>>>>>> cfa2abc (ORM setup; user model mapped)

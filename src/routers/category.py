@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify
 from flask_jwt_extended import jwt_required
 import src.controllers.category as controller
-from ..errors.category import CategoryNotFound, UserAlreadyApproved
+from src.errors.category import CategoryNotFound, UserAlreadyApproved
+from src.errors.record import UserNotApprovedForCategory
 
 category_routers = Blueprint('categories', __name__)
 
@@ -33,6 +34,11 @@ def approve_user():
 @category_routers.app_errorhandler(CategoryNotFound)
 def user_not_found(err):
     return jsonify({'error': 'Category not found'}), 404
+
+
+@category_routers.app_errorhandler(UserNotApprovedForCategory)
+def user_not_approved_for_category(err):
+    return jsonify({'error': 'User not approved for category'}), 400
 
 
 @category_routers.app_errorhandler(UserAlreadyApproved)

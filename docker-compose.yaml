@@ -3,12 +3,12 @@ services:
    restart: always
    build: .
    environment:
-     PORT: 1010
+     PORT: 80
      DEBUG: true
-     JWT_SECRET_KEY: d55733d213427c339a66cd69764214eb97f1f35b61a0e354409f24c11d2972af
-     DATABASE_URL: mysql+pymysql://database:3306/database?user=root&password=root
+     JWT_SECRET_KEY: <SECRET KEY>
+     DATABASE_URL: mysql+pymysql://database:3306/db?user=root&password=root
    ports:
-    - 1010:1010
+    - 80:80
    networks:
      - app
  database:
